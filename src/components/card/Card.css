@@ -1,0 +1,12 @@
+.container-flex{
+    /* display: flex; */
+    width: 200px;
+    /* height: 100%; */
+    flex-wrap: wrap;
+    /* justify-content: space-around; */
+    justify-content: center;
+}
+.shoe-image{
+    height: 150px;
+    width: 100%;
+}

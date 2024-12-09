@@ -1,0 +1,16 @@
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 100%; */
+    align-items: center;
+    row-gap: 20px;
+    /* column-gap: 38px; */
+}
+.shoe-image{
+    height: 1500px;
+    width: 1300px;
+}
+.home-shoe{
+    width: 100%;
+    /* height: 50vh; */
+}

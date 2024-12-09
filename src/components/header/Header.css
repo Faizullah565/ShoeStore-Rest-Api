@@ -1,0 +1,11 @@
+.addToCard{
+    width: 25px;
+    height: 25px;
+    margin-top: 10px;
+    float: right;
+    cursor: pointer;
+}
+
+.cartIcon{
+    margin-top: 10px;
+}
