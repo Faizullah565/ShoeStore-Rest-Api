@@ -39,7 +39,6 @@ function AddToCart() {
                         headers: { "Content-Type": "multipart/form-data" },
                     });
                     setGet(result.data)
-                    console.log(result.data)
                 return result.data; // Handle success response here
             } catch (error) {
                 console.error("Error editing image:", error);
@@ -54,7 +53,6 @@ function AddToCart() {
                         headers: { "Content-Type": "multipart/form-data" },
                     });
                     setGet(result.data)
-                    console.log(result.data)
                 return result.data; // Handle success response here
             } catch (error) {
                 console.error("Error editing image:", error);
@@ -62,7 +60,6 @@ function AddToCart() {
             }
         }
         else{
-            console.log("minimum quanity is:",qty)
             return
         }
     }
