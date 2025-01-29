@@ -63,7 +63,7 @@ const SearchComponent = () => {
         <div className="input-group">
           <input
             type="text"
-            className="form-control"
+            className="form-control bg-gray-50 border border-gray-400 text-gray-900 text-sm rounded-md p-2"
             placeholder="Search for an item..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}

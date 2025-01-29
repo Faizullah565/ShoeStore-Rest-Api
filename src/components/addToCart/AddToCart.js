@@ -89,61 +89,88 @@ function AddToCart() {
 
     let serialNo = 0;
     return (
-        <div className='container cd-flex'>
-            <div>
-                <h2 className="text-center">Your Cart Details</h2>
-            </div>
-            {loading ? <Spinner /> :
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Imeges</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            carts.map(cart => (
-                                <tr>
-                                    <th scope="row">{++serialNo}</th>
-                                    {/* <img src={require(`../`)}/> */}
-                                    <td><img src={require(`../../../Backend/uploads/${cart.image}`)} style={{ width: "50px" }}></img></td>
-                                    <td className='align-middle'>{cart.name}</td>
-                                    <td className='align-middle'>{cart.price}</td>
-                                    <td className='align-middle'><h3 >
-                                        <i class="fa-solid fa-plus btn btn-success " onClick={() => handleShoeQuantity("+", cart.qty, cart._id)}></i>
-                                        {/* <button onClick={() => handleShoeQuantity("+", cart.qty, cart._id)} >+</button> */}
-                                        <strong className='align-middle'>{cart.qty}</strong>
-                                        {/* <button onClick={() => handleShoeQuantity("-", cart.qty, cart._id)} >-</button> */}
-                                        <i class="fa-solid fa-minus btn btn-danger" onClick={() => handleShoeQuantity("-", cart.qty, cart._id)} ></i>
-                                    </h3>
-                                    </td>
-                                    <td className='align-middle'>
-                                        <h3>{cart.price * cart.qty}</h3>
-                                    </td>
-                                    <td className='align-middle'>
-                                        <i class="fa-solid fa-trash-can btn" onClick={() => deleteCart(cart._id, cart.id)}></i>
-                                    </td>
-
-                                </tr>
-                            ))
-                        }
-                    </tbody>
-                </table>
-            }
-            {loading ? null : <b>
-                <label>Total Amount:</label>
-                <span>{" " + +balance}</span>
-            </b>}{loading ? null :
-                <button style={{ marginLeft: "20px" }} className='btn btn-dark' onClick={toastify}><Link to="/contact">Order Now</Link></button>
-            }
-        </div>
+        <div className="container mx-auto flex flex-col gap-4 p-4">
+  <div>
+    <h2 className="text-center text-2xl font-bold">Your Cart Details</h2>
+  </div>
+  {loading ? (
+    <div className="flex justify-center">
+    <Spinner/>
+    </div>
+  ) : (
+    <table className="table-auto w-full border-collapse border border-gray-300">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="border border-gray-300 px-4 py-2">#</th>
+          <th className="border border-gray-300 px-4 py-2">Images</th>
+          <th className="border border-gray-300 px-4 py-2">Name</th>
+          <th className="border border-gray-300 px-4 py-2">Price</th>
+          <th className="border border-gray-300 px-4 py-2">Quantity</th>
+          <th className="border border-gray-300 px-4 py-2">Total</th>
+          <th className="border border-gray-300 px-4 py-2">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {carts.map((cart, index) => (
+          <tr key={cart._id} className="hover:bg-gray-50">
+            <td className="border border-gray-300 px-4 py-2 text-center">{index + 1}</td>
+            <td className="border border-gray-300 px-4 py-2 text-center">
+              <img
+                src={require(`../../../Backend/uploads/${cart.image}`)}
+                className="w-12 h-12 object-cover mx-auto"
+                alt="Product"
+              />
+            </td>
+            <td className="border border-gray-300 px-4 py-2">{cart.name}</td>
+            <td className="border border-gray-300 px-4 py-2 text-center">{cart.price}</td>
+            <td className="border border-gray-300 px-4 py-2 text-center">
+              <div className="flex items-center justify-center gap-2">
+                <button
+                  className="px-2 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                  onClick={() => handleShoeQuantity("+", cart.qty, cart._id)}
+                >
+                  +
+                </button>
+                <span className="font-semibold">{cart.qty}</span>
+                <button
+                  className="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                  onClick={() => handleShoeQuantity("-", cart.qty, cart._id)}
+                >
+                  -
+                </button>
+              </div>
+            </td>
+            <td className="border border-gray-300 px-4 py-2 text-center font-semibold">
+              {cart.price * cart.qty}
+            </td>
+            <td className="border border-gray-300 px-4 py-2 text-center">
+              <button
+                className="text-red-500 hover:text-red-700"
+                onClick={() => deleteCart(cart._id, cart.id)}
+              >
+                <i className="fa-solid fa-trash-can"></i>
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )}
+  {loading ? null : (
+    <div className="flex justify-between items-center">
+      <b>
+        <label>Total Amount:</label>
+        <span className="ml-2 font-bold text-lg">{balance}</span>
+      </b>
+      <button
+        className="ml-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900"
+        onClick={toastify}
+      >
+        <Link to="/contact">Order Now</Link>
+      </button>
+    </div>
+  )}
+</div>
     )
 }
 export default AddToCart

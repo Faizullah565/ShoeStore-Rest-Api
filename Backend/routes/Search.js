@@ -1,7 +1,7 @@
 // routes/search.js
 const express = require("express");
 const router = express.Router();
-const Images = require("../modals/imageDetails"); // Make sure to define the Item model in this path
+const Images = require("../models/imageDetails"); // Make sure to define the Item model in this path
 
 // Search route - GET /search?q=<query>
 router.get("/search", async (req, res) => {

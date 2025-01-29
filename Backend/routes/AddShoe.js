@@ -1,9 +1,11 @@
 // routes/search.js
 const express = require("express");
 const router = express.Router();
+
+// const { gql } = require("apollo-server-express");
 // require("../modals/imageDetails");
 // const Images = mongoose.model("ImageDetails")
-const Images = require("../modals/imageDetails"); // Make sure to define the Item model in this path
+const Images = require("../models/imageDetails"); // Make sure to define the Item model in this path
 
 ////////////////////////////////////////////////////////////
 const multer = require('multer');
@@ -44,6 +46,24 @@ router.post("/upload-image", upload.single("image"), async (req, res) => {
 })
 
 // const data = Array.from({ length: 100 }, (_, i) => `Box ${i + 1}`);
+
+//get route
+
+// const typeDefs = gql`
+//   type ImageDetails {
+//     image: String
+//     name: String
+//     price: Float
+//     qty: Int
+//     id: Int
+//   }
+
+//   type Query {
+//     getImages(page: Int, itemsPerPage: Int): [ImageDetails]
+//   }
+// `;
+
+// module.exports = typeDefs; 
 
 router.get("/get-image", async (req, res) => {
   try {

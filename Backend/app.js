@@ -1,5 +1,6 @@
 //mongoDB connection import
 const connectToMongo = require("./db")
+
 //call to mongoDB
 connectToMongo();
 //import express
@@ -10,11 +11,11 @@ const mongoose = require('mongoose');
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
-const port = 5000;
+const port = process.env.PORT;
 // importing schema
-require("./modals/imageDetails");
+require("./models/imageDetails");
 const Images = mongoose.model("ImageDetails")
-require("./modals/addToCartModal");
+require("./models/addToCartModal");
 const AddToCart = mongoose.model("add_to_cart")
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -23,6 +24,8 @@ app.get('/', (req, res) => {
 
 ////////////////////////////////////////////////
 // Import routes
+app.use('/api/auth', require('./routes/auth'));
+
 const searchRouter = require("./routes/Search");
 // Use the search router for `/search` endpoint
 app.use("/api/Search", searchRouter);

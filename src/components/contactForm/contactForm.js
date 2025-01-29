@@ -37,26 +37,22 @@ function ContactForm() {
   };
 
   return (
-    <div
-      className="container mt-1 d-flex justify-content-center"
-      style={{ backgroundColor: "#f8f9fa", borderRadius: "10px", padding: "30px" }}
-    >
+    <div className="container mt-1 flex justify-center">
       <form
         onSubmit={handleSubmit}
-        className="w-50 p-4"
-        style={{ backgroundColor: "#ffffff", borderRadius: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.5)" }}
+        className="w-full sm:w-1/2 p-6 bg-white rounded-lg shadow-lg"
       >
-        <h2 className="text-center mb-4" style={{ color: "#007bff" }}>
-          <strong>Contact Form</strong>
+        <h2 className="text-center mb-5 text-blue-500 font-bold text-3xl">
+          Contact Form
         </h2>
 
-        <div className="mb-3">
-          <label htmlFor="country" className="form-label">
+        <div className="mb-4">
+          <label htmlFor="country" className="block text-sm font-semibold text-gray-700">
             Country:
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="country"
             name="country"
             required
@@ -65,13 +61,13 @@ function ContactForm() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="firstName" className="form-label">
+        <div className="mb-4">
+          <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700">
             First Name:
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="firstName"
             name="firstName"
             value={formData.firstName}
@@ -79,13 +75,13 @@ function ContactForm() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="lastName" className="form-label">
+        <div className="mb-4">
+          <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700">
             Last Name:
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="lastName"
             name="lastName"
             value={formData.lastName}
@@ -93,13 +89,13 @@ function ContactForm() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="address" className="form-label">
+        <div className="mb-4">
+          <label htmlFor="address" className="block text-sm font-semibold text-gray-700">
             Street Address:
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="address"
             name="address"
             value={formData.address}
@@ -107,13 +103,13 @@ function ContactForm() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="city" className="form-label">
+        <div className="mb-4">
+          <label htmlFor="city" className="block text-sm font-semibold text-gray-700">
             City:
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="city"
             name="city"
             value={formData.city}
@@ -121,13 +117,13 @@ function ContactForm() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="postalCode" className="form-label">
+        <div className="mb-4">
+          <label htmlFor="postalCode" className="block text-sm font-semibold text-gray-700">
             Postal Code:
           </label>
           <input
             type="number"
-            className="form-control"
+            className="form-input mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="postalCode"
             name="postalCode"
             value={formData.postalCode}
@@ -135,13 +131,13 @@ function ContactForm() {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="phoneNumber" className="form-label">
+        <div className="mb-4">
+          <label htmlFor="phoneNumber" className="block text-sm font-semibold text-gray-700">
             Phone Number:
           </label>
           <input
             type="tel"
-            className="form-control"
+            className="form-input mt-2 w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             id="phoneNumber"
             name="phoneNumber"
             placeholder="e.g., +123-456-7890"
@@ -153,19 +149,19 @@ function ContactForm() {
           />
         </div>
 
-        <div className="mb-3 text-center">
-          <h5>Total Amount: <span style={{ color: "#28a745" }}>Rs. {balance}</span></h5>
+        <div className="mb-4 text-center">
+          <h5 className="text-xl text-green-500">Total Amount: Rs. {balance}</h5>
         </div>
 
         <button
           type="submit"
-          className="btn btn-primary w-100"
-          style={{ backgroundColor: "#007bff", border: "none" }}
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           Submit
         </button>
       </form>
     </div>
+
   );
 }
 

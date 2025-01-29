@@ -37,82 +37,59 @@ function Home() {
             setAddToCart(getResult.data.data); // Update state with fetched addToCart data
         }
         getCart()
-    }, [])
+    }, [getAddToCart])
     useEffect(() => {
         getAddToCart.map((cart) => {
             addToCard(cart.id, cart.name, cart.price, cart.image, cart.qty)
         })
     }, [getAddToCart])
 
-    // const handlePrev = () => {
-    //     if (currentPage > 1) {
-    //         setCurrentPage((prev) => prev - 1);
-    //     }
-    // };
-
-    // const handleNext = () => {
-    //     if (currentPage < totalPages) {
-    //         setCurrentPage((prev) => prev + 1);
-    //     }
-    // };
     const closeSearch = () => {
         addSearchShoes([]);
     }
     return (
-        <div className='position-relativev '>
+        <div className="relative">
             <div>
-                <h1 className='text-center'>
+                <h1 className="text-center text-4xl font-bold my-6">
                     Welcome to Balghari ShoeStore
                 </h1>
-                <img className='home-shoe' src='https://theabsstore.com/cdn/shop/files/ABS-Web-Banner_c3269ade-3d4e-4058-8c5a-9d4321844b5f.jpg?v=1727360246&width=1500' alt='Home Image'></img>
-                {/* position-absolute top-50 start-50 translate-middle */}
-                {search.length ?
-                    <div style={{ backgroundColor: "gray", border: "5px solid blue" }}>
-                        <div className='float-end'>
-                            <i class="fa-solid fa-x btn" onClick={() => closeSearch()}></i>
+                <img
+                    className="w-full h-auto rounded-lg shadow-md"
+                    src="https://theabsstore.com/cdn/shop/files/ABS-Web-Banner_c3269ade-3d4e-4058-8c5a-9d4321844b5f.jpg?v=1727360246&width=1500"
+                    alt="Home"
+                />
+
+                {search.length > 0 ? (
+                    <div className="bg-gray-200 border-4 border-blue-500 mt-6 p-4 rounded-lg shadow-md">
+                        <div className="flex justify-end">
+                            <i
+                                className="fa-solid fa-x text-gray-500 cursor-pointer hover:text-gray-700"
+                                onClick={() => closeSearch()}
+                            ></i>
                         </div>
-                        <h2 className='text-center'>Search Shoes!</h2>
-                        <ul className='list d-flx shoe-image h-100 ' >
-                            {
-                                search.map(shoe => (
-                                    <Card key={shoe.id} shoe={shoe} />
-                                ))
-                            }
+                        <h2 className="text-center text-2xl font-semibold my-4">Search Shoes!</h2>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {search.map((shoe) => (
+                                <Card key={shoe.id} shoe={shoe} />
+                            ))}
                         </ul>
                     </div>
-                    : null}
-                {loading ? <Spinner className="my-3" /> : <>
-                    <ul className='list d-flx shoe-image'>
-                        {
-                            getAllIShoes.map(shoe => (
-                                <Card key={shoe.id} shoe={shoe} />
-                            ))
-                        }
+                ) : null}
+
+                {loading ? (
+                    <div className="my-6 mx-auto flex justify-center">
+                        <Spinner className="my-6 mx-auto" />
+                    </div>
+                ) : (
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                        {getAllIShoes.map((shoe) => (
+                            <Card key={shoe.id} shoe={shoe} />
+                        ))}
                     </ul>
-                </>
-                }
+                )}
             </div>
-            {/* <div className='containet h-100'>
-                <div className="box-container">
-                    {getAllIShoes.map((box, index) => (
-                        <div key={index} className="box">
-                            {box.name}
-                        </div>
-                    ))}
-                </div>
-                <div className="pagination-controls">
-                    <button onClick={handlePrev} disabled={currentPage === 1}>
-                        P
-                    </button>
-                    <span>
-                         {currentPage}  {totalPages}
-                    </span>
-                    <button onClick={handleNext} disabled={currentPage === totalPages}>
-                        Next
-                    </button>
-                </div>
-            </div> */}
         </div>
+
     )
 }
 

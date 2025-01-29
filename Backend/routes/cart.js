@@ -2,20 +2,23 @@
 const express = require("express");
 const router = express.Router();
 
-const AddToCart = require("../modals/addToCartModal"); // Make sure to define the Item model in this path
+const AddToCart = require("../models/addToCartModal"); // Make sure to define the Item model in this path
+const fetchuser = require("../middleware/fetchuser");
 
 //////////////////////////////////////////////////////////////////
 // Add to Cart
-router.post("/add-to-cart", async (req, res) => {
+router.post("/add-to-cart", fetchuser, async (req, res) => {
     const result = await AddToCart.findOne({ "id": req.body.id });
-    console.log(result)
+    console.log(req.user.id)
+    console.log(req.body)
     try {
       const result = await AddToCart.create({
         image: req.body.image,
         name: req.body.name,
         price: req.body.price,
         qty: req.body.qty,
-        id: req.body.id
+        id: req.body.id,
+        userId:req.user.id
       })
       res.json(result)
       //  console.log(result)

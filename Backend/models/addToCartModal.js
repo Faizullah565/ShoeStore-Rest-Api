@@ -7,6 +7,11 @@ const addToCartSchema= new mongoose.Schema(
         image:String,
         price:Number,
         qty:Number,
+        userId:{
+            type: mongoose.Schema.ObjectId,  //Just like foreign key
+            ref: "user",
+            required: true,
+        },
     },
     {
         collection:"add_to_cart",
